@@ -1,0 +1,161 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://src/scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://src/scenes/game/player-animations/flip/11.png" type="Texture" id=2]
+[ext_resource path="res://src/scenes/game/player-animations/flip/10.png" type="Texture" id=3]
+[ext_resource path="res://src/scenes/game/player-animations/flip/9.png" type="Texture" id=4]
+[ext_resource path="res://src/scenes/game/player-animations/flip/8.png" type="Texture" id=5]
+[ext_resource path="res://src/scenes/game/player-animations/flip/7.png" type="Texture" id=6]
+[ext_resource path="res://src/scenes/game/player-animations/flip/6.png" type="Texture" id=7]
+[ext_resource path="res://src/scenes/game/player-animations/flip/5.png" type="Texture" id=8]
+[ext_resource path="res://src/img/WizWalk/frame1.png" type="Texture" id=9]
+[ext_resource path="res://src/img/WizWalk/frame2.png" type="Texture" id=10]
+[ext_resource path="res://src/img/WizWalk/frame3.png" type="Texture" id=11]
+[ext_resource path="res://src/img/WizWalk/frame4.png" type="Texture" id=12]
+[ext_resource path="res://src/img/WizWalk/frame5.png" type="Texture" id=13]
+[ext_resource path="res://src/img/WizWalk/frame6.png" type="Texture" id=14]
+[ext_resource path="res://src/scenes/game/player-animations/idle/flying.png" type="Texture" id=15]
+[ext_resource path="res://src/scenes/game/player-animations/flip/4.png" type="Texture" id=16]
+[ext_resource path="res://src/scenes/game/player-animations/flip/12.png" type="Texture" id=17]
+[ext_resource path="res://src/scenes/game/player-animations/idle/falling.png" type="Texture" id=18]
+[ext_resource path="res://src/scenes/game/player-animations/jump/5.png" type="Texture" id=19]
+[ext_resource path="res://src/scenes/game/player-animations/jump/6.png" type="Texture" id=20]
+[ext_resource path="res://src/scenes/game/player-animations/jump/7.png" type="Texture" id=21]
+[ext_resource path="res://src/scenes/game/player-animations/jump/8.png" type="Texture" id=22]
+[ext_resource path="res://src/scenes/game/player-animations/jump/9.png" type="Texture" id=23]
+[ext_resource path="res://src/scenes/game/player-animations/jump/10.png" type="Texture" id=24]
+[ext_resource path="res://src/scenes/game/player-animations/jump/11.png" type="Texture" id=25]
+[ext_resource path="res://src/scenes/game/player-animations/jump/12.png" type="Texture" id=26]
+[ext_resource path="res://src/scenes/game/player-animations/jump/13.png" type="Texture" id=27]
+[ext_resource path="res://src/scenes/game/player-animations/fire.png" type="Texture" id=28]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "reorienting",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "walking",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "flying",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 17 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "flipping",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "falling",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="ParticlesMaterial" id=2]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 1
+emission_sphere_radius = 12.0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 10.0
+flatness = 0.0
+gravity = Vector3( 0, -5000, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 0.1
+angular_velocity = 200.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 100.0
+radial_accel_random = 0.5
+tangential_accel = 0.0
+tangential_accel_random = 1.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 1.0
+scale_random = 1.0
+color = Color( 1, 1, 1, 1 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angular Velocity", "Animation", "Color", "Damping", "Emission Shape", "Gravity", "Hue Variation", "Initial Velocity", "Linear Accel", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
+
+[node name="player" type="Area2D"]
+
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+bg_sprite = null
+flying_variation = 30
+flying_divisor = 8
+flying_horizontal_speed = 5.0
+fall_speed = 0.2
+rise_speed = 0.5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 10, 6, 3, 6, 0, 30, 13, 30 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+
+frames = SubResource( 1 )
+animation = "walking"
+centered = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="Particles2D" type="Particles2D" parent="." index="2"]
+
+position = Vector2( 14, 14 )
+scale = Vector2( 0.2, 0.2 )
+emitting = true
+amount = 2
+lifetime = 0.1
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.1
+randomness = 1.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -2.42437, -0.00122838, 12.6047, 2042.21 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 2 )
+texture = ExtResource( 28 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform", "Visibility" ]
+
+

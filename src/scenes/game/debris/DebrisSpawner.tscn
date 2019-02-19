@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/scenes/game/debris/DebrisSpawner.gd" type="Script" id=1]
+
+[node name="DebrisSpawner" type="Node2D"]
+
+script = ExtResource( 1 )
+debris_node = null
+debris_line = null
+spawn_time_range = Vector2( 0.2, 0.3 )
+angular_velocity_range = Vector2( -40, 40 )
+linear_velocity_range = Vector2( 50, 100 )
+warning_line_width = 5
+
+[node name="DebrisTimer" type="Timer" parent="." index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="DebrisTimer" to="." method="_on_DebrisTimer_timeout"]
+
+

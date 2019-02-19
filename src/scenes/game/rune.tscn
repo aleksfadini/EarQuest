@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/scripts/pent_btn.gd" type="Script" id=1]
+[ext_resource path="res://src/img/EQ-rune/frame1.png" type="Texture" id=2]
+[ext_resource path="res://src/img/EQ-rune/frame3.png" type="Texture" id=3]
+[ext_resource path="res://src/themes/Pent_Label_fonts.tres" type="DynamicFont" id=4]
+
+[node name="Rune" type="Control"]
+
+self_modulate = Color( 1, 1, 1, 0.196078 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_min_size = Vector2( 36, 36 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Offset", "Rect", "Visibility" ]
+btn_nb = 0
+
+[node name="Btn" type="TextureButton" parent="." index="0" groups=[
+"Rune_Btn",
+]]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+_sections_unfolded = [ "Mouse", "Textures" ]
+
+[node name="Lbl" type="Label" parent="." index="1"]
+
+self_modulate = Color( 1, 1, 1, 0.470588 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 36.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[connection signal="pressed" from="Btn" to="." method="_on_Btn_pressed"]
+
+

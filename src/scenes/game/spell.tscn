@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/scripts/spell.gd" type="Script" id=1]
+[ext_resource path="res://src/img/EQspellButtonBIGunpressed.png" type="Texture" id=2]
+[ext_resource path="res://src/img/EQspellButtonBIGpressed.png" type="Texture" id=3]
+[ext_resource path="res://src/img/EQspellFireball.png" type="Texture" id=4]
+
+[node name="Spell" type="Control" index="0"]
+
+self_modulate = Color( 1, 1, 1, 0.196078 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_min_size = Vector2( 32, 32 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Offset", "Rect", "Size Flags", "Visibility" ]
+spell_name = "fireball"
+
+[node name="Btn" type="TextureButton" parent="." index="0" groups=[
+"Spell_Btn",
+]]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+_sections_unfolded = [ "Mouse", "Rect", "Textures" ]
+
+[node name="Symbol" type="TextureRect" parent="." index="1"]
+
+self_modulate = Color( 1, 1, 1, 0.470588 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 28, 28 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 4 )
+stretch_mode = 0
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[connection signal="toggled" from="Btn" to="." method="_on_Btn_toggled"]
+
+

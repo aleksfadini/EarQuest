@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/7Eb.ogg-fcb4744e83a4a76dc606a52a87049c4a.oggstr"
+
+[deps]
+
+source_file="res://src/pianosim/samples/7Eb.ogg"
+dest_files=[ "res://.import/7Eb.ogg-fcb4744e83a4a76dc606a52a87049c4a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

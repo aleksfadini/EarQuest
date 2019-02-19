@@ -1,0 +1,595 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://src/scripts/game.gd" type="Script" id=1]
+[ext_resource path="res://src/img/EQbg-forest.png" type="Texture" id=2]
+[ext_resource path="res://src/scripts/bg.gd" type="Script" id=3]
+[ext_resource path="res://src/img/EQbg-forest-3.png" type="Texture" id=4]
+[ext_resource path="res://src/img/EQHILLSbgS3.png" type="Texture" id=5]
+[ext_resource path="res://src/img/EQHILLSbgS4.png" type="Texture" id=6]
+[ext_resource path="res://src/img/EQHILLSbgG.png" type="Texture" id=7]
+[ext_resource path="res://src/scenes/game/player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/img/EQHILLSbgGF.png" type="Texture" id=9]
+[ext_resource path="res://src/scenes/game/debris/DebrisSpawner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/scenes/game/mob/MobSpawner.gd" type="Script" id=11]
+[ext_resource path="res://src/scenes/game/mob/mob.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/scripts/BgSpawner.gd" type="Script" id=13]
+[ext_resource path="res://src/scenes/game/debris/debris.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/img/EQscreenbgrevisited.png" type="Texture" id=15]
+[ext_resource path="res://src/fonts/slkscr.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://src/img/EQhp/frame1.png" type="Texture" id=17]
+[ext_resource path="res://src/img/EQhp/frame3.png" type="Texture" id=18]
+[ext_resource path="res://src/img/EQhp/frame2.png" type="Texture" id=19]
+[ext_resource path="res://src/img/EQmana/frame2.png" type="Texture" id=20]
+[ext_resource path="res://src/img/EQhourglass/frame1.png" type="Texture" id=21]
+[ext_resource path="res://src/img/EQhourglass/frame3.png" type="Texture" id=22]
+[ext_resource path="res://src/img/EQhourglass/frame2.png" type="Texture" id=23]
+[ext_resource path="res://src/img/EQlight/frame1.png" type="Texture" id=24]
+[ext_resource path="res://src/img/EQlight/frame2.png" type="Texture" id=25]
+[ext_resource path="res://src/img/EQlight/frame3.png" type="Texture" id=26]
+[ext_resource path="res://src/img/EQlight/frame4.png" type="Texture" id=27]
+[ext_resource path="res://src/img/EQ-runetable.png" type="Texture" id=28]
+[ext_resource path="res://src/scripts/SideCont.gd" type="Script" id=29]
+[ext_resource path="res://src/img/EQspellLauncherRESIZE.png" type="Texture" id=30]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 15
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 16 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "blinking",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 24 ) ],
+"loop": false,
+"name": "lightoff",
+"speed": 5.0
+} ]
+
+[node name="game" type="Node2D" index="0"]
+
+position = Vector2( 0, 1 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+location = 0
+critical_max_ticks = 30
+
+[node name="SplitScreen" type="VBoxContainer" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 300.0
+margin_bottom = 270.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Top" type="MarginContainer" parent="SplitScreen" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 300.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 300, 270 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Pause", "Rect" ]
+
+[node name="bg5" type="Sprite" parent="SplitScreen/Top" index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 300, 250 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility", "Z Index" ]
+
+[node name="bg4" type="Sprite" parent="SplitScreen/Top" index="1"]
+
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 300, 250 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility", "Z Index" ]
+
+[node name="bg3" type="Sprite" parent="SplitScreen/Top" index="2"]
+
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1200, 230 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility", "Z Index" ]
+
+[node name="bg2" type="Sprite" parent="SplitScreen/Top" index="3"]
+
+texture = ExtResource( 6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 300, 250 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility", "Z Index" ]
+
+[node name="bg1" type="Sprite" parent="SplitScreen/Top" index="4"]
+
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 300, 250 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility", "Z Index" ]
+
+[node name="player" parent="SplitScreen/Top" index="5" instance=ExtResource( 8 )]
+
+position = Vector2( 50, 119 )
+flying_variation = 5
+
+[node name="bg0" type="Sprite" parent="SplitScreen/Top" index="6"]
+
+texture = ExtResource( 9 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 300, 250 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Animation", "Material", "Offset", "Pause", "Region", "Transform", "Visibility", "Z Index" ]
+
+[node name="MobSpawner" parent="SplitScreen/Top" index="7" instance=ExtResource( 10 )]
+
+position = Vector2( 400, 150 )
+script = ExtResource( 11 )
+_sections_unfolded = [ "Transform" ]
+mob = ExtResource( 12 )
+mob_level = 1
+
+[node name="BgSpawner" type="Node2D" parent="SplitScreen/Top" index="8"]
+
+position = Vector2( 350, 150 )
+script = ExtResource( 13 )
+_sections_unfolded = [ "Transform" ]
+debris_node = ExtResource( 14 )
+
+[node name="BgTimer" type="Timer" parent="SplitScreen/Top/BgSpawner" index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="Overlay" type="Control" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Bg" type="Sprite" parent="Overlay" index="0"]
+
+texture = ExtResource( 15 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+[node name="HBox" type="VBoxContainer" parent="Overlay" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 300.0
+margin_bottom = 538.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Top" type="Control" parent="Overlay/HBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 300.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 300, 270 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Pause", "Rect" ]
+
+[node name="score_counter" type="Timer" parent="Overlay/HBox/Top" index="0"]
+
+process_mode = 1
+wait_time = 0.25
+one_shot = false
+autostart = true
+
+[node name="score_label" type="Label" parent="Overlay/HBox/Top" index="1"]
+
+self_modulate = Color( 1, 1, 1, 0.662667 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 160.0
+margin_top = 182.0
+margin_right = 280.0
+margin_bottom = 202.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Visibility", "custom_fonts" ]
+
+[node name="SelSpell" type="Label" parent="Overlay/HBox/Top" index="2"]
+
+self_modulate = Color( 1, 1, 1, 0.662667 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 56.0
+margin_top = 233.0
+margin_right = 220.0
+margin_bottom = 251.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+text = "0"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Visibility", "custom_fonts" ]
+
+[node name="SelLetter" type="Label" parent="Overlay/HBox/Top" index="3"]
+
+self_modulate = Color( 1, 1, 1, 0.662667 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 22.0
+margin_top = 233.0
+margin_right = 33.0
+margin_bottom = 251.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+text = "0"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags", "Visibility", "custom_fonts" ]
+
+[node name="HPBar" type="TextureProgress" parent="Overlay/HBox/Top" index="4"]
+
+self_modulate = Color( 1, 1, 1, 0.862745 )
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 22.0
+margin_top = -109.0
+margin_right = 42.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 20, 50 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+min_value = 0.0
+max_value = 100.0
+step = 0.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+texture_under = ExtResource( 17 )
+texture_over = ExtResource( 18 )
+texture_progress = ExtResource( 19 )
+fill_mode = 3
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Radial Fill", "Rect", "Size Flags", "Textures", "Visibility" ]
+
+[node name="MPBar" type="TextureProgress" parent="Overlay/HBox/Top" index="5"]
+
+self_modulate = Color( 1, 1, 1, 0.862745 )
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 53.0
+margin_top = -110.0
+margin_right = 73.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 20, 50 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 37.0
+exp_edit = false
+rounded = false
+texture_under = ExtResource( 17 )
+texture_over = ExtResource( 18 )
+texture_progress = ExtResource( 20 )
+fill_mode = 3
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Radial Fill", "Rect", "Size Flags", "Textures", "Visibility" ]
+
+[node name="HGlass" type="TextureProgress" parent="Overlay/HBox/Top" index="6"]
+
+self_modulate = Color( 1, 1, 1, 0.862745 )
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_left = 84.0
+margin_top = -92.0
+margin_right = 104.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 20, 50 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 100.0
+exp_edit = false
+rounded = false
+texture_under = ExtResource( 21 )
+texture_over = ExtResource( 22 )
+texture_progress = ExtResource( 23 )
+fill_mode = 3
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Radial Fill", "Rect", "Size Flags", "Textures", "Visibility" ]
+
+[node name="CritBall" type="AnimatedSprite" parent="Overlay/HBox/Top" index="7"]
+
+self_modulate = Color( 1, 1, 1, 0.862745 )
+position = Vector2( 123, 201 )
+frames = SubResource( 2 )
+animation = "blinking"
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Radial Fill", "Rect", "Size Flags", "Textures", "Transform", "Visibility" ]
+
+[node name="MidVBox" type="HBoxContainer" parent="Overlay/HBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 274.0
+margin_right = 300.0
+margin_bottom = 507.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+_sections_unfolded = [ "Margin", "custom_constants" ]
+
+[node name="BoardCont" type="MarginContainer" parent="Overlay/HBox/MidVBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 13.0
+margin_right = 235.0
+margin_bottom = 233.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Size Flags", "custom_constants" ]
+
+[node name="BoardBg" type="TextureRect" parent="Overlay/HBox/MidVBox/BoardCont" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 222.0
+margin_bottom = 223.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 28 )
+stretch_mode = 0
+_sections_unfolded = [ "Offset", "Size Flags" ]
+
+[node name="Board" type="GridContainer" parent="Overlay/HBox/MidVBox/BoardCont" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 115.0
+margin_top = 116.0
+margin_right = 115.0
+margin_bottom = 116.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 5
+_sections_unfolded = [ "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_constants" ]
+
+[node name="SideCont" type="MarginContainer" parent="Overlay/HBox/MidVBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 239.0
+margin_right = 287.0
+margin_bottom = 233.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 29 )
+_sections_unfolded = [ "Grow Direction", "Size Flags" ]
+
+[node name="SideBg" type="TextureRect" parent="Overlay/HBox/MidVBox/SideCont" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_right = 48.0
+margin_bottom = 233.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 30 )
+stretch_mode = 0
+_sections_unfolded = [ "Offset", "Size Flags" ]
+
+[node name="SideBtns" type="GridContainer" parent="Overlay/HBox/MidVBox/SideCont" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = 116.0
+margin_right = 28.0
+margin_bottom = 116.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/vseparation = 7
+columns = 1
+_sections_unfolded = [ "Mouse", "Rect", "Size Flags", "Theme", "custom_colors", "custom_constants" ]
+
+[node name="Btm" type="HBoxContainer" parent="Overlay/HBox" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 511.0
+margin_right = 300.0
+margin_bottom = 541.0
+rect_min_size = Vector2( 30, 30 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Rect", "custom_constants" ]
+
+[node name="Tween" type="Tween" parent="." index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[connection signal="body_entered" from="SplitScreen/Top/player" to="SplitScreen/Top/player" method="_on_player_body_entered"]
+
+[connection signal="death" from="SplitScreen/Top/player" to="." method="_on_player_death"]
+
+[connection signal="death" from="SplitScreen/Top/player" to="SplitScreen/Top/player" method="_on_player_death"]
+
+[connection signal="timeout" from="SplitScreen/Top/BgSpawner/BgTimer" to="SplitScreen/Top/BgSpawner" method="_on_BgTimer_timeout"]
+
+[connection signal="timeout" from="Overlay/HBox/Top/score_counter" to="." method="_on_score_counter_timeout"]
+
+
